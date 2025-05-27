@@ -1,20 +1,37 @@
-# from google.adk import tool
+# tools/generate_image.py
 
-# @tool
-def generate_image(campaign_text: str, style: str = "cheerful") -> str:
+from google import genai
+from google.genai import types
+from PIL import Image
+from io import BytesIO
+
+def image_creator(campaign_text: str, style: str = "cheerful") -> str:
     """
-    Generate an image prompt based on the campaign text and visual style.
-    The result is an image description prompt suitable for a model like DALL·E or Gemini.
-
-    Args:
-        campaign_text (str): The final narrative for the campaign.
-        style (str): Optional tone/style like 'cheerful', 'informative', 'dramatic'.
-
-    Returns:
-        str: An image prompt to be passed to an image generation model.
+    Generate an image using Gemini-2.0-flash-preview-image-generation based on campaign text.
     """
-    return (
+    # Keep prompt short and safe
+    prompt = (
         f"Create a {style} digital illustration that visually represents this campaign message:\n\n"
-        f"\"{campaign_text}\"\n\n"
-        f"Make the image suitable for social media, easy to understand by the target audience, and emotionally resonant."
+        f"{campaign_text.strip()[:300]}\n\n"
+        f"The image should be suitable for social media and resonate with urban families."
     )
+
+    client = genai.Client()
+
+    response = client.models.generate_content(
+        model="gemini-2.0-flash-preview-image-generation",
+        contents=prompt,
+        config=types.GenerateContentConfig(
+            response_modalities=["TEXT", "IMAGE"]
+        )
+    )
+
+    for part in response.candidates[0].content.parts:
+        if part.inline_data is not None:
+            image = Image.open(BytesIO(part.inline_data.data))
+            image.save("generated_image.png")
+            return "Image saved as generated_image.png"
+        elif part.text is not None:
+            return part.text
+
+    return "Image generation failed."
