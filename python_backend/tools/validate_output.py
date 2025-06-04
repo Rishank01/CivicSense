@@ -7,6 +7,6 @@ def validate_output(narrative: str) -> str:
         f"- Grammatically correct\n"
         f"- Factually accurate\n\n"
         f"Narrative:\n{narrative}\n\n"
-        f"If it meets all criteria, reply ONLY with: 'Validated'\n"
-        f"Otherwise, suggest brief improvements without adding commentary."
+        f"If it meets all criteria, reply ONLY with: {narrative}. \n"
+        f"Otherwise, suggest brief improvements without adding commentary.\n\n"
     )

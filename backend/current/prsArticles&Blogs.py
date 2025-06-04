@@ -201,6 +201,6 @@ if __name__ == "__main__":
     #     print(f"\nTitle: {b['title']}\nURL: {b['url']}\nContent snippet: {b['content']}...\n")
 
     print("\nFetching Articles with Content...")
-    articles_with_content = fetch_full_contents(content_type='article', max_count=3)
+    articles_with_content = fetch_full_contents(content_type='article', max_count=10)
     for a in articles_with_content:
         print(f"\nTitle: {a['title']}\nURL: {a['url']}\nContent snippet: {a['content']}...\n")

@@ -54,6 +54,13 @@ def image_creator(campaign_text: str, style: str = "cheerful") -> str:
             response_modalities=["TEXT", "IMAGE"]
         )
     )
+    candidate = response.candidates[0]
+    if candidate.content is None:
+        print("No content found in candidate.")
+        # Handle this case: return empty dict, raise error, or fallback
+        return {}
+
+    print("Number of parts:", len(candidate.content.parts))
 
     print("Received response from image generation model.")
     print("Number of parts:", len(response.candidates[0].content.parts))
