@@ -56,7 +56,7 @@ const FaqSection = () => {
             const isOpen = openIndex === index;
 
             return (
-              <div key={index} className="rounded-xl bg-white transition-all duration-300">
+              <div key={index} className="rounded-xl bg-[#f9fafb] transition-all duration-300">
                 {/* Question Row */}
                 <div
                   onClick={() => toggleFAQ(index)}

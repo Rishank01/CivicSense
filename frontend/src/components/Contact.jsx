@@ -36,7 +36,7 @@ const Contact = () => {
         </div>
 
         {/* Right Column - Contact Form */}
-        <div className="md:w-1/2 bg-white bg-opacity-90 rounded-xl p-6 sm:p-8 md:p-10 text-gray-900 shadow-lg">
+        <div className="md:w-1/2 bg-green-100 bg-opacity-90 rounded-xl p-6 sm:p-8 md:p-10 text-gray-900 shadow-lg">
           <form className="flex flex-col gap-5 sm:gap-6">
             <div>
               <label htmlFor="name" className="block mb-1 font-semibold">

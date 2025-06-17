@@ -3,6 +3,7 @@ import { RiArrowDownWideFill } from "react-icons/ri";
 import AboutSection from '../components/About';
 import FaqSection from '../components/FaqSection';
 import Contact from '../components/Contact';
+import Footer from '../components/Footer';
 
 const Home = () => {
     console.log(forestImage); // Check the import
@@ -79,11 +80,13 @@ const Home = () => {
             </div>
 
             {/* About */}
-            <AboutSection />
+            <AboutSection/>
             {/* FAQs */}
-            <FaqSection />
+            <FaqSection/>
             {/* Contact */}
             <Contact/>
+            {/* Footer */}
+            <Footer/>
         </>
     );
 };
